@@ -1,5 +1,8 @@
 package chp01;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+
 import java.util.Arrays;
 import java.util.Comparator;
 
@@ -14,20 +17,38 @@ public class Lambda {
         }
     }
 
-    static class LengthComparator implements Comparator<String>{
+    static class LengthComparator implements Comparator<String> {
 
         @Override
         public int compare(String o1, String o2) {
-            return Integer.compare(o1.length(),o2.length());
+            return Integer.compare(o1.length(), o2.length());
         }
     }
 
     public static void main(String[] args) {
+        //jdk8之前
         Worker worker = new Worker();
         new Thread(worker).start();
+        //jdk8
+        new Thread(() -> {
+            for (int i = 0; i < 10; i++) {
+                System.out.println(i);
+            }
+        });
         String[] strings = {"a", "bcd", "ef"};
+        //jdk8之前
         Arrays.sort(strings, new LengthComparator());
-        Arrays.sort(strings, Comparator.comparingInt(String::length));
-        System.out.println(Arrays.toString(strings));
+        //jdk8
+        Arrays.sort(strings, (String o1, String o2) -> Integer.compare(o1.length(), o2.length()));
+        //lambda有多行的话可以使用花括号
+        Arrays.sort(strings, (String o1, String o2) -> {
+            if (o1.length() > o2.length()) return 1;
+            else if (o1.length() < o2.length()) return -1;
+            else return 0;
+        });
+        //如果可以推导出参数的类型，不需要显示的声明类型
+        Comparator<String> comp=(first,second)->Integer.compare(first.length(),second.length());
+        //如果只有一个参数，并且类型是可以被推导的，那么可以不加括号
+        EventHandler<ActionEvent> listener=event -> System.out.println("Click");
     }
 }
