@@ -16,7 +16,7 @@ public class DefaultMethod {
     interface Named{
         default String getName(){return getClass().getName()+"_"+hashCode();}
     }
-    class Student implements Person,Named{
+    static class Student implements Person,Named{
         @Override
         public long getId() {
             return 0;

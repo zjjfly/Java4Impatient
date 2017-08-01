@@ -34,7 +34,7 @@ public class Lambda {
             for (int i = 0; i < 10; i++) {
                 System.out.println(i);
             }
-        });
+        }).start();
         String[] strings = {"a", "bcd", "ef"};
         //jdk8之前
         Arrays.sort(strings, new LengthComparator());
