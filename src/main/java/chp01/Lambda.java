@@ -3,6 +3,7 @@ package chp01;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Comparator;
 
@@ -17,8 +18,7 @@ public class Lambda {
         }
     }
 
-    static class LengthComparator implements Comparator<String> {
-
+    static class LengthComparator implements Comparator<String>,Serializable {
         @Override
         public int compare(String o1, String o2) {
             return Integer.compare(o1.length(), o2.length());

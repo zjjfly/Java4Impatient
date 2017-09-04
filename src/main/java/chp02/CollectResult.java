@@ -18,10 +18,12 @@ public class CollectResult {
         Set<Integer> set = StreamFactory.intStream().collect(Collectors.toSet());
         //如果想要控制返回的set的类型，使用Collectors.toCollection
         TreeSet<Integer> treeSet = StreamFactory.intStream().collect(Collectors.toCollection(TreeSet::new));
+        //字符串连接用Collectors.joining，可以传入一个分隔符
         String join = StreamFactory.stringStream().collect(Collectors.joining());
         String delimiter = StreamFactory.stringStream().collect(Collectors.joining("，"));
         String persons = StreamFactory.objectStream().map(Person::toString)
                                       .collect(Collectors.joining(","));
+        //Collectors.summarizingInt产生一个统计对象，可以获取和，平均值，最大最小值
         IntSummaryStatistics statistics = StreamFactory.stringStream().collect(Collectors.summarizingInt(String::length));
         double averageLength = statistics.getAverage();
         int maxLength = statistics.getMax();
