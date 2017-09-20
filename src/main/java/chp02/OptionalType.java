@@ -11,7 +11,7 @@ public class OptionalType {
         Stream<String> words = Stream.of("add Queen To Castle".split(" "));
         Optional<String> optionalValue = words.filter(s -> s.startsWith("Q")).findFirst();
         //错误的使用Optional的例子
-        optionalValue.get().toLowerCase();//如果Optional没有值，还是会抛出异常
+        //optionalValue.get().toLowerCase();//如果Optional没有值，还是会抛出异常
         //下面的代码并不比以前的先判断对象是否是null然后进行处理这样的代码更简单
         if (optionalValue.isPresent()) {
             System.out.println(optionalValue.get());

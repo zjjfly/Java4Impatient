@@ -3,6 +3,7 @@ package chp02;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.net.URI;
 import java.net.URL;
 import java.nio.file.Files;
@@ -159,7 +160,7 @@ public class Exercise {
             doubles[1] += doubles2[1];
             return doubles;
         });
-        assertEquals(sumCount[0] / sumCount[1], 2.0);
+        assertEquals(new BigDecimal(sumCount[0]).divide(new BigDecimal(sumCount[1])), new BigDecimal(2.0));
     }
 
     @Test
