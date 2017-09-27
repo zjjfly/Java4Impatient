@@ -26,13 +26,13 @@ public class Exercise {
 
     @Test
     public void exer2() {
-        File test = new File("/Users/zjjfly/idea works/Java4Impatient/src/test");
+        File test = new File("./src/test");
         File[] files = test.listFiles(pathname -> pathname.isDirectory());
-        File java = new File("/Users/zjjfly/idea works/Java4Impatient/src/test/java");
-        File resources = new File("/Users/zjjfly/idea works/Java4Impatient/src/test/resources");
-        assertArrayEquals(new File[]{java, resources}, files);
+        File java = new File("./src/test/java");
+        File resources = new File("./src/test/resources");
+        assertArrayEquals(new File[]{resources,java}, files);
         File[] dir = test.listFiles(File::isDirectory);
-        assertArrayEquals(new File[]{java, resources}, dir);
+        assertArrayEquals(new File[]{resources,java}, dir);
     }
 
     public File[] selectFileBySuffix(String path, String suffix) {

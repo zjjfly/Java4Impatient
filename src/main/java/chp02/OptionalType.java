@@ -8,6 +8,11 @@ import java.util.stream.Stream;
 
 public class OptionalType {
     public static void main(String[] args) {
+        //生成Optional
+        Optional<String> optional = Optional.of("s");
+        assert optional.get().equals("s");
+        //生成空的Optional
+        assert !Optional.empty().isPresent();
         Stream<String> words = Stream.of("add Queen To Castle".split(" "));
         Optional<String> optionalValue = words.filter(s -> s.startsWith("Q")).findFirst();
         //错误的使用Optional的例子
