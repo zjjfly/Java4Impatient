@@ -136,7 +136,7 @@ public class Exercise {
         });
         //solution3
         listStream = Stream.of(list1, list2, list3);
-        List<Integer> reduce = listStream.reduce(new ArrayList<>(), (re, l) -> {
+        listStream.reduce(new ArrayList<Integer>(), (re, l) -> {
             ArrayList<Integer> list = new ArrayList<>(l);
             list.addAll(re);
             return list;

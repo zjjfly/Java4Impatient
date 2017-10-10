@@ -24,7 +24,7 @@ public class BenchMarkTest {
         static List<String> words;
 
         static {
-            ClassLoader classLoader = new BenchmarkState().getClass().getClassLoader();
+            ClassLoader classLoader = BenchMarkTest.class.getClassLoader();
             URL resource = classLoader.getResource("War and Peace.txt");
             assert resource != null;
             try {
