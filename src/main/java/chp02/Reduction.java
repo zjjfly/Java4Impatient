@@ -2,6 +2,9 @@ package chp02;
 
 import java.util.stream.Stream;
 
+/**
+ * @author zjjfly
+ */
 public class Reduction {
     public static void main(String[] args) {
         Stream<Integer> values = Stream.of(1, 2, 3, 4, 5);

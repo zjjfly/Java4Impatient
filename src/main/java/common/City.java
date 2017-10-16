@@ -3,6 +3,9 @@ package common;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+/**
+ * @author zjjfly
+ */
 @Data
 @AllArgsConstructor
 public class City {

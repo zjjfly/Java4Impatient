@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * @author zjjfly
+ */
 public class ConstructorReference {
     public static void main(String[] args) {
         List<String> labels = new ArrayList<>();

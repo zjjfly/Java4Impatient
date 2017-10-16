@@ -2,6 +2,9 @@ package common;
 
 import java.util.stream.Stream;
 
+/**
+ * @author zjjfly
+ */
 public class StreamFactory {
     public static Stream<Integer> intStream(){
         return Stream.of(1,2,4,7,6,2,9);

@@ -8,6 +8,9 @@ import java.util.Iterator;
 import java.util.Optional;
 import java.util.stream.Stream;
 
+/**
+ * @author zjjfly
+ */
 public class StatefulTransform {
     public static void main(String[] args) {
         Stream<String> uniqueWords = Stream.of("merrily", "merrily", "merrily", "gently").distinct();

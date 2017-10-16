@@ -2,13 +2,19 @@ package chp01;
 
 import java.util.function.BiFunction;
 
+/**
+ * @author zjjfly
+ */
 public class FunctionalInterface {
 
     //对于函数式接口，最好都加上@FunctionalInterface注释。它会检查这个接口是否符合函数式接口的标准。
     @java.lang.FunctionalInterface
 
     interface MyFuncInterface {
-        //只有一个抽象方法的接口被称为函数式接口
+        /**
+         * 只有一个抽象方法的接口被称为函数式接口
+         * 完成某种工作
+         */
         void doWork();
     }
 

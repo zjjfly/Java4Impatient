@@ -2,6 +2,9 @@ package chp01;
 
 import java.util.Arrays;
 
+/**
+ * @author zjjfly
+ */
 public class MethodReference {
     public static void main(String[] args) {
         //不使用方法引用
@@ -11,8 +14,8 @@ public class MethodReference {
         Arrays.sort(new String[]{"a","bcd","ef"},String::compareToIgnoreCase);
         //引用包裹类型的实例方法
         ConcurrentGreeter concurrentGreeter = new ConcurrentGreeter();
-        ConcurrentGreeter.CGreeter cGreeter = concurrentGreeter.new CGreeter();
-        cGreeter.greet();
+        ConcurrentGreeter.CcGreeter cGreceter = concurrentGreeter.new CcGreeter();
+        cGreceter.greet();
     }
 
 }

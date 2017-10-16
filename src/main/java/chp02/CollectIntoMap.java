@@ -8,6 +8,9 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+/**
+ * @author zjjfly
+ */
 public class CollectIntoMap {
     public static void main(String[] args) {
         Stream<Person> people = StreamFactory.objectStream();

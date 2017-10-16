@@ -8,13 +8,17 @@ import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.*;
 
+/**
+ * @author zjjfly
+ */
 public class GroupAndPartition {
     public static void main(String[] args) {
         Stream<Locale> locales = Stream.of(Locale.getAvailableLocales());
         Map<String, List<Locale>> country2Locales = locales.collect(groupingBy(Locale::getCountry));
         List<Locale> swissLocales = country2Locales.get("CH");
         locales = Stream.of(Locale.getAvailableLocales());
-        Map<Boolean, List<Locale>> englishAndOtherLocales = locales.collect(partitioningBy(l -> l.getLanguage().equals("en")));
+        Map<Boolean, List<Locale>> englishAndOtherLocales = locales.collect(partitioningBy(l -> "en"
+                .equals(l.getLanguage())));
         List<Locale> englishLocales = englishAndOtherLocales.get(true);
         locales = Stream.of(Locale.getAvailableLocales());
         Map<String, Set<Locale>> countryToLocaleSet = locales.collect(groupingBy(Locale::getCountry, toSet()));

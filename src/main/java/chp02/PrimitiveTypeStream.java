@@ -10,6 +10,9 @@ import java.util.stream.IntStream;
 import java.util.stream.LongStream;
 import java.util.stream.Stream;
 
+/**
+ * @author zjjfly
+ */
 public class PrimitiveTypeStream {
     public static void main(String[] args) {
         //产生原生类型流的静态方法

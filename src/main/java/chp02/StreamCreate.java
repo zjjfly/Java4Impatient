@@ -8,7 +8,12 @@ import java.util.Arrays;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
 
+/**
+ * @author zjjfly
+ */
 public class StreamCreate {
+    static Pattern compile = Pattern.compile("[\\P{L}]+");
+
     public static void main(String[] args) {
         //把数组准成Stream
         String content="i am jjzi";
@@ -24,7 +29,7 @@ public class StreamCreate {
         Stream<Double> randoms = Stream.generate(Math::random);
         Stream<BigInteger> integers = Stream.iterate(BigInteger.ZERO, bigInteger -> bigInteger.add(BigInteger.ONE));
         //其他生成Stream的方法
-        Stream<String> splitStream = Pattern.compile("[\\P{L}]+").splitAsStream(content);
+        Stream<String> splitStream = compile.splitAsStream(content);
         try(Stream<String> lines=Files.lines(Paths.get("gradlew"))) {
             System.out.println(lines.count());
         } catch (IOException e) {

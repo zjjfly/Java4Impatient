@@ -6,11 +6,14 @@ import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.stream.Stream;
 
+/**
+ * @author zjjfly
+ */
 public class OptionalType {
     public static void main(String[] args) {
         //生成Optional
         Optional<String> optional = Optional.of("s");
-        assert optional.get().equals("s");
+        assert "s".equals(optional.get());
         //生成空的Optional
         assert !Optional.empty().isPresent();
         Stream<String> words = Stream.of("add Queen To Castle".split(" "));
@@ -32,7 +35,7 @@ public class OptionalType {
                                                 .findAny();
         //orElse方法设定默认值
         String result = optionalString.orElse("");
-        assert result.equals("");
+        assert "".equals(result);
         //orElseGet方法调用代码块产生默认值
         result = optionalString.orElseGet(() -> System.getProperty("user.dir"));
         assert result.equals(System.getProperty("user.dir"));

@@ -13,6 +13,9 @@ import java.util.concurrent.ConcurrentMap;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+/**
+ * @author zjjfly
+ */
 public class ParallelStream {
     public static void main(String[] args) {
         //生成并行流的方法
@@ -50,8 +53,9 @@ public class ParallelStream {
         //
         words = wordList.stream();
         words.forEach(s -> {
-            if (s.length() < 7)
+            if (s.length() < 7) {
                 wordList.remove(s);
+            }
         });
     }
 }

@@ -4,6 +4,9 @@ import java.util.stream.Stream;
 
 import static chp02.TransformMethod.characterStream;
 
+/**
+ * @author zjjfly
+ */
 public class ExtractAndCombine {
     public static void main(String[] args) {
         Stream<Double> randoms = Stream.generate(Math::random).limit(100);
