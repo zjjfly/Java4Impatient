@@ -1,13 +1,13 @@
 package chp01;
 
-import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import org.apache.commons.lang3.concurrent.BasicThreadFactory;
 
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.concurrent.*;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
 
 /**
  * @author zjjfly
@@ -33,18 +33,21 @@ public class Lambda {
     public static void main(String[] args) {
         //jdk8之前
         Worker worker = new Worker();
-        ThreadFactory threadFactory = new ThreadFactoryBuilder().setNameFormat("my-thread-%d").build();
-        ThreadPoolExecutor singleThreadPool = new ThreadPoolExecutor(1, 1, 0L, TimeUnit.MILLISECONDS,
-                                                                               new LinkedBlockingDeque<>(1024), threadFactory,
-                                                                                 new ThreadPoolExecutor.AbortPolicy());
-        singleThreadPool.execute(worker);
+        ScheduledThreadPoolExecutor poolExecutor = new ScheduledThreadPoolExecutor(
+                1,
+                new BasicThreadFactory.Builder()
+                        .namingPattern(
+                                "my-thread-%d")
+                        .daemon(true)
+                        .build());
+        poolExecutor.execute(worker);
         //jdk8
-        singleThreadPool.execute(() -> {
+        poolExecutor.execute(() -> {
             for (int i = 0; i < 10; i++) {
                 System.out.println(i);
             }
         });
-        singleThreadPool.shutdown();
+        poolExecutor.shutdown();
         String[] strings = {"a", "bcd", "ef"};
         //jdk8之前
         Arrays.sort(strings, new LengthComparator());

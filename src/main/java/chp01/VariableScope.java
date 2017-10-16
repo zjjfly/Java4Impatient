@@ -1,13 +1,10 @@
 package chp01;
 
-import com.google.common.util.concurrent.ThreadFactoryBuilder;
+import org.apache.commons.lang3.concurrent.BasicThreadFactory;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.LinkedBlockingDeque;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
 
 /**
  * @author zjjfly
@@ -19,12 +16,14 @@ public class VariableScope {
         //虽然不能给变量重新赋值，但是可以修改变量，这样做也是线程不安全的
         List<Integer> nums = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
-            ThreadFactory threadFactory = new ThreadFactoryBuilder().setNameFormat("my-thread-%d").build();
-            ThreadPoolExecutor singleThreadPool = new ThreadPoolExecutor(1, 1, 0L, TimeUnit.MILLISECONDS,
-                                                                         new LinkedBlockingDeque<>(1024), threadFactory,
-                                                                         new ThreadPoolExecutor.AbortPolicy());
-            singleThreadPool.execute(() -> nums.add(1));
-            singleThreadPool.shutdown();
+            ScheduledThreadPoolExecutor poolExecutor = new ScheduledThreadPoolExecutor(1,
+                                                                                       new BasicThreadFactory.Builder()
+                                                                                               .namingPattern(
+                                                                                                       "my-thread-%d")
+                                                                                               .daemon(true)
+                                                                                               .build());
+            poolExecutor.execute(()->nums.add(1));
+            poolExecutor.shutdown();
         }
         //在lambda表达式中，不能声明和局部变量同名的参数或者局部变量
 //        Path first = Paths.get("/Users/zjjfly/Desktop");
@@ -54,12 +53,14 @@ public class VariableScope {
                 Thread.yield();
             }
         };
-        ThreadFactory threadFactory = new ThreadFactoryBuilder().setNameFormat("my-thread-%d").build();
-                ThreadPoolExecutor singleThreadPool = new ThreadPoolExecutor(1, 1, 0L, TimeUnit.MILLISECONDS,
-                                                                             new LinkedBlockingDeque<>(1024), threadFactory,
-                                                                             new ThreadPoolExecutor.AbortPolicy());
-        singleThreadPool.execute(runnable);
-        singleThreadPool.shutdown();
+        ScheduledThreadPoolExecutor poolExecutor = new ScheduledThreadPoolExecutor(1,
+                                                                                   new BasicThreadFactory.Builder()
+                                                                                           .namingPattern(
+                                                                                                   "my-thread-%d")
+                                                                                           .daemon(true)
+                                                                                           .build());
+        poolExecutor.execute(runnable);
+        poolExecutor.shutdown();
     }
 
 }

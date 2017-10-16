@@ -1,23 +1,22 @@
 package chp01;
 
-import com.google.common.util.concurrent.ThreadFactoryBuilder;
+import org.apache.commons.lang3.concurrent.BasicThreadFactory;
 
-import java.util.concurrent.LinkedBlockingDeque;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
 
 class ConcurrentGreeter {
     class CcGreeter extends Greeter {
         @Override
         public void greet() {
             //引用包裹类型的实例方法
-            ThreadFactory threadFactory = new ThreadFactoryBuilder().setNameFormat("my-thread-%d").build();
-                    ThreadPoolExecutor singleThreadPool = new ThreadPoolExecutor(1, 1, 0L, TimeUnit.MILLISECONDS,
-                                                                                 new LinkedBlockingDeque<>(1024), threadFactory,
-                                                                                 new ThreadPoolExecutor.AbortPolicy());
-            singleThreadPool.execute(ConcurrentGreeter.this::greet);
-            singleThreadPool.shutdown();
+            ScheduledThreadPoolExecutor poolExecutor = new ScheduledThreadPoolExecutor(1,
+                                                                                       new BasicThreadFactory.Builder()
+                                                                                               .namingPattern(
+                                                                                                       "my-thread-%d")
+                                                                                               .daemon(true)
+                                                                                               .build());
+            poolExecutor.execute(ConcurrentGreeter.this::greet);
+            poolExecutor.shutdown();
         }
     }
     private void greet(){
