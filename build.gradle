@@ -14,7 +14,8 @@ findbugs {
 //    omitVisitors = ["FindNonShortCircuit"]
 //    includeFilter = file("$rootProject.projectDir/config/findbugs/includeFilter.xml")
 //    excludeFilter = file("$rootProject.projectDir/config/findbugs/excludeFilter.xml")
-//    excludeBugsFilter = file("$rootProject.projectDir/config/findbugs/excludeBugsFilter.xml")
+//    excludeBugsFilter = file("$rootProject.projectDir/config/findbugs/excludeFilter.xml")
+    excludeFilter = file("$rootProject.projectDir/findbugs-filter.xml")
 }
 sourceCompatibility = 1.8
 
