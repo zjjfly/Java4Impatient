@@ -1,11 +1,14 @@
 package chp03;
 
 import common.Person;
+import javafx.embed.swing.JFXPanel;
 import javafx.scene.image.Image;
 import javafx.scene.image.PixelReader;
 import javafx.scene.image.PixelWriter;
 import javafx.scene.image.WritableImage;
+import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.lang.reflect.Field;
@@ -19,9 +22,15 @@ import java.util.function.UnaryOperator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static chp03.LambdaArgument.*;
-
+import static chp03.LambdaArgument.ColorTransformer;
 public class Exercise {
+    private Image image;
+    @Before
+    public void init(){
+        JFXPanel jfxPanel = new JFXPanel();
+        this.image= new Image("https://img3.doubanio.com/dae/niffler/niffler/images/c4972ec0-e3bf-11e7-9d88-0242ac110021.jpg");
+    }
+
     @Test
     public void exercise1() throws Exception {
         int i = 1;
@@ -71,7 +80,6 @@ public class Exercise {
 
     @Test
     public void exercise5() throws Exception {
-        Image image = new Image("https://pic3.zhimg.com/v2-b826fc3a6755c8ac25186c4b87d42c32_b.jpg");
         Image out = transform(image, (x, y, c) -> {
             double width = image.getWidth();
             double height = image.getHeight();
@@ -81,7 +89,7 @@ public class Exercise {
                 return Color.GRAY;
             }
         });
-        System.out.println(out);
+        HBox hBox = new HBox();
     }
 
     private static Image transform(Image in, ColorTransformer transformer) {
@@ -130,7 +138,6 @@ public class Exercise {
 
     @Test
     public void exercise8() throws Exception {
-        Image image = new Image("https://pic3.zhimg.com/v2-b826fc3a6755c8ac25186c4b87d42c32_b.jpg");
         transform(image, colorTransformer(image.getWidth(), image.getHeight(), 10, Color.RED));
     }
 
@@ -193,7 +200,6 @@ public class Exercise {
 
     @Test
     public void exercise10() throws Exception {
-        Image image = new Image("https://pic3.zhimg.com/v2-b826fc3a6755c8ac25186c4b87d42c32_b.jpg");
         UnaryOperator<Color> op = Color::brighter;
         transform(image, op.compose(Color::grayscale));
     }
@@ -208,7 +214,6 @@ public class Exercise {
 
     @Test
     public void exercise11() throws Exception {
-        Image image = new Image("https://pic3.zhimg.com/v2-b826fc3a6755c8ac25186c4b87d42c32_b.jpg");
         ColorTransformer grapFrame = colorTransformer(image.getWidth(), image.getHeight(), 10, Color.GRAY);
         ColorTransformer compose = compose(grapFrame, convert(Color::brighter));
         transform(image, compose);
