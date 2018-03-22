@@ -1,8 +1,16 @@
+plugins {
+    //lombok的gradle插件
+    id 'io.franzbecker.gradle-lombok' version '1.11'
+}
+apply plugin: 'java'
+apply plugin: 'findbugs'
 group 'com.jjzi'
 version '1.0-SNAPSHOT'
 
-apply plugin: 'java'
-apply plugin: "findbugs"
+lombok {
+    version = "1.16.18"
+    sha256 = ""
+}
 
 findbugs {
     sourceSets = [sourceSets.main]
@@ -19,13 +27,31 @@ findbugs {
 }
 sourceCompatibility = 1.8
 
+import io.franzbecker.gradle.lombok.task.DelombokTask
+//delombok任务定义
+task delombok(type: DelombokTask, dependsOn: compileJava) {
+    ext.outputDir = file("$buildDir/delombok")
+    outputs.dir(outputDir)
+    sourceSets.main.java.srcDirs.each {
+        inputs.dir(it)
+        args(it, "-d", outputDir)
+    }
+}
+
+task delombokHelp(type: DelombokTask) {
+    args "--help"
+}
+javadoc {
+    dependsOn delombok
+    source = delombok.outputDir
+    failOnError = false
+}
 repositories {
     mavenLocal()
     mavenCentral()
 }
 
 dependencies {
-    compile 'org.projectlombok:lombok:1.16.18'
     compile "org.apache.commons:commons-lang3:3.4"
     testCompile 'junit:junit:4.12'
     testCompile 'org.openjdk.jmh:jmh-core:1.19'
