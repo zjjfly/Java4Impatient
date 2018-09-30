@@ -11,11 +11,15 @@ import java.util.Arrays;
 @ExtensionMethod({Arrays.class,Extensions.class})
 public class ExtensionMethodExample {
     public static void main(String[] args) {
-        int [] numbers={1,42,3};
+        int [] numbers={1,4,2,3};
         //Arrays中的sort的第一个参数是数组类型,所以现在所有的数组都可以使用sort方法了
+        System.out.println("first sort:");
+        numbers.sort(1,3);
+        numbers.stream().forEach(System.out::println);
+        System.out.println("second sort:");
         numbers.sort();
-        numbers.test();
-        numbers.stream().forEach(System.out::print);
+        numbers.stream().forEach(System.out::println);
+        numbers.extension();
     }
 }
 

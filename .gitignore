@@ -4,3 +4,5 @@
 build/
 out/
 /Java4Impatient.iml
+*.txt
+com/
