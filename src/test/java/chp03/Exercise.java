@@ -63,7 +63,7 @@ public class Exercise {
     @Test
     public void exercise3() throws Exception {
         myassert(true);
-        myassert(() -> Calendar.getInstance().get(Calendar.YEAR) == 2017);
+        myassert(() -> Calendar.getInstance().get(Calendar.YEAR) == 2018);
     }
 
     private void myassert(Supplier<Boolean> supplier) {

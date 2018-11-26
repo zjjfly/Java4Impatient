@@ -1,7 +1,5 @@
 package lombok;
 
-import lombok.experimental.var;
-
 import java.util.ArrayList;
 
 /**
@@ -15,7 +13,6 @@ public class ValVarExample {
             System.out.println(s);
         }
         val foo = example.get(0);
-        foo.toLowerCase();
         //var和val用法一样,但不会把变量标记为final
         var s="jjzi";
         s="zjj";
