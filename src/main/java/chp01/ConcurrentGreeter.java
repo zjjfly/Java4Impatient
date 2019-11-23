@@ -9,17 +9,19 @@ class ConcurrentGreeter {
         @Override
         public void greet() {
             //引用包裹类型的实例方法
-            ScheduledThreadPoolExecutor poolExecutor = new ScheduledThreadPoolExecutor(1,
-                                                                                       new BasicThreadFactory.Builder()
-                                                                                               .namingPattern(
-                                                                                                       "my-thread-%d")
-                                                                                               .daemon(true)
-                                                                                               .build());
+            ScheduledThreadPoolExecutor poolExecutor = new ScheduledThreadPoolExecutor(
+                    1,
+                    new BasicThreadFactory.Builder()
+                            .namingPattern(
+                                    "my-thread-%d")
+                            .daemon(true)
+                            .build());
             poolExecutor.execute(ConcurrentGreeter.this::greet);
             poolExecutor.shutdown();
         }
     }
-    private void greet(){
+
+    private void greet() {
         System.out.println("Out Hello World");
     }
 }

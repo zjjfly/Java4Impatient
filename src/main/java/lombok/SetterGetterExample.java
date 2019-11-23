@@ -1,7 +1,6 @@
 package lombok;
 
 import java.util.List;
-
 /**
  * @author zjjfly
  */
