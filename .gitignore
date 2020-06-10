@@ -5,3 +5,4 @@ build/
 out/
 /Java4Impatient.iml
 *.txt
+**/$Proxy*.class

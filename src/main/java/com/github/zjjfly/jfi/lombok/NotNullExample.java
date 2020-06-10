@@ -1,6 +1,9 @@
 package com.github.zjjfly.jfi.lombok;
 
 
+import lombok.Data;
+import lombok.NonNull;
+
 /**
  * @author zjjfly
  */

@@ -1,6 +1,8 @@
 package com.github.zjjfly.jfi.lombok;
 
 
+import lombok.SneakyThrows;
+
 import java.io.UnsupportedEncodingException;
 
 /**

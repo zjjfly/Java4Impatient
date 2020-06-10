@@ -1,5 +1,8 @@
 package com.github.zjjfly.jfi.lombok;
 
+import lombok.val;
+import lombok.var;
+
 import java.util.ArrayList;
 
 /**

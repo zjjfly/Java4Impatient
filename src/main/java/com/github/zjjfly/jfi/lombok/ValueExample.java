@@ -1,7 +1,10 @@
 package com.github.zjjfly.jfi.lombok;
 
-import com.github.zjjfly.jfi.lombok.experimental.NonFinal;
-import com.github.zjjfly.jfi.lombok.experimental.Wither;
+import lombok.AccessLevel;
+import lombok.ToString;
+import lombok.Value;
+import lombok.experimental.NonFinal;
+import lombok.experimental.Wither;
 
 /**
  * @author zjjfly

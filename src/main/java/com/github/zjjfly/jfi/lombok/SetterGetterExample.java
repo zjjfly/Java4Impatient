@@ -1,5 +1,11 @@
 package com.github.zjjfly.jfi.lombok;
 
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NonNull;
+import lombok.Setter;
+import lombok.ToString;
+
 import java.util.List;
 /**
  * @author zjjfly

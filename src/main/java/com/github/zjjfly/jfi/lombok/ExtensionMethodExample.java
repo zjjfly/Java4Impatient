@@ -1,6 +1,6 @@
 package com.github.zjjfly.jfi.lombok;
 
-import com.github.zjjfly.jfi.lombok.experimental.ExtensionMethod;
+import lombok.experimental.ExtensionMethod;
 
 import java.util.Arrays;
 

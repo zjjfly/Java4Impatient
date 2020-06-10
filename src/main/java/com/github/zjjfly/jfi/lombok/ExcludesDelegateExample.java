@@ -1,6 +1,7 @@
 package com.github.zjjfly.jfi.lombok;
 
-import com.github.zjjfly.jfi.lombok.experimental.Delegate;
+
+import lombok.experimental.Delegate;
 
 import java.util.ArrayList;
 import java.util.Collection;

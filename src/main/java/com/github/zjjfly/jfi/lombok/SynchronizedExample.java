@@ -1,5 +1,7 @@
 package com.github.zjjfly.jfi.lombok;
 
+import lombok.Synchronized;
+
 /**
  * Synchronized和Java中的Synchronized关键字不同的是,它使用一个锁对象来加锁
  * @author zjjfly

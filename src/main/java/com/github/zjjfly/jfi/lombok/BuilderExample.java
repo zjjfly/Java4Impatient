@@ -1,5 +1,9 @@
 package com.github.zjjfly.jfi.lombok;
 
+import lombok.Builder;
+import lombok.Singular;
+import lombok.ToString;
+
 import java.util.ArrayList;
 import java.util.Set;
 

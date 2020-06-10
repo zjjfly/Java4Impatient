@@ -1,5 +1,11 @@
 package com.github.zjjfly.jfi.lombok;
 
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+
 /**
  * @author zjjfly
  */

@@ -1,7 +1,8 @@
 package com.github.zjjfly.jfi.common;
 
-import com.github.zjjfly.jfi.lombok.AllArgsConstructor;
-import com.github.zjjfly.jfi.lombok.Data;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
 
 /**
  * @author zjjfly

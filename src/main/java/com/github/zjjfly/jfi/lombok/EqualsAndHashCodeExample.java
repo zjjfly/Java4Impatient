@@ -1,5 +1,8 @@
 package com.github.zjjfly.jfi.lombok;
 
+import lombok.EqualsAndHashCode;
+import lombok.Setter;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 

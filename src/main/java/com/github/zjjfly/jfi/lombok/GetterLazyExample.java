@@ -1,11 +1,14 @@
 package com.github.zjjfly.jfi.lombok;
 
 
+import lombok.Getter;
+
 /**
  * @Getter(lazy=true)类似Scala的lazy关键字
  * @author zjjfly
  */
 public class GetterLazyExample {
+
     @Getter(lazy=true) private final double[] cached = expensive();
 
     private double[] expensive() {

@@ -1,6 +1,8 @@
 package com.github.zjjfly.jfi.lombok;
 
-import com.github.zjjfly.jfi.lombok.experimental.Delegate;
+import lombok.AllArgsConstructor;
+import lombok.Cleanup;
+import lombok.experimental.Delegate;
 
 import java.io.FileInputStream;
 import java.io.IOException;

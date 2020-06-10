@@ -1,6 +1,12 @@
 package com.github.zjjfly.jfi.lombok;
 
-import java.io.*;
+import lombok.Cleanup;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
